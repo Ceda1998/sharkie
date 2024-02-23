@@ -29,13 +29,13 @@ class Character extends moveableObject {
 
   animateIdle() {
     setInterval(() => {
-      if (this.world.keyboard.LEFT) {
+        if (!this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) {
         let i = this.currentImage % this.IMAGES_IDLE.length; //let I = 0 % 6;
         let path = this.IMAGES_IDLE[i];
         this.img = this.imageChache[path];
         this.currentImage++;
-      }
-    }, 300);
+        }
+    }, 250);
   }
 
   moveRight() {
