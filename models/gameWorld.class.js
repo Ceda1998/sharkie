@@ -25,6 +25,9 @@ class Gameworld {
     this.character.world = this;
     console.log(this.character.moveRight)
     this.character.moveRight();
+    this.character.moveLeft();
+    this.character.moveUp();
+    this.character.moveDown();
   }
 
   draw() {
