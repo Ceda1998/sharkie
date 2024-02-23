@@ -83,6 +83,11 @@ class Character extends moveableObject {
         this.positionx -= 5;
       }
     }, 1000 / 60);
+    setInterval(() => {
+        if (this.world.keyboard.LEFT) {
+            this.animateSwim();
+        }
+    }, 300); 
   }
   moveUp() {
     setInterval(() => {
@@ -90,6 +95,11 @@ class Character extends moveableObject {
         this.positiony -= 5;
       }
     }, 1000 / 60);
+    setInterval(() => {
+        if (this.world.keyboard.UP) {
+            this.animateSwim();
+        }
+    }, 300); 
   }
   moveDown() {
     setInterval(() => {
@@ -97,5 +107,10 @@ class Character extends moveableObject {
         this.positiony += 5;
       }
     }, 1000 / 60);
+    setInterval(() => {
+        if (this.world.keyboard.DOWN) {
+            this.animateSwim();
+        }
+    }, 300); 
   }
 }
