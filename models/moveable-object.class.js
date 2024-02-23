@@ -8,6 +8,7 @@ class moveableObject {
     imageChache = {};
     speed;
 
+   
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -22,9 +23,6 @@ class moveableObject {
       
     }
 
-     moveRight() {
-        console.log('moving right')
-    }
     movementLeft() {
         setInterval(() => {
             this.positionx -= this.speed;

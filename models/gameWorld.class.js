@@ -10,11 +10,21 @@ class Gameworld {
   ];
   ctx;
   canvas;
+  keyboard;
 
-  constructor(canvas) {
+  constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
+    this.keyboard = keyboard;
     this.draw();
+    this.setWorld();
+  }
+
+  setWorld() {
+    console.log("welt")
+    this.character.world = this;
+    console.log(this.character.moveRight)
+    this.character.moveRight();
   }
 
   draw() {

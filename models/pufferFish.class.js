@@ -1,7 +1,6 @@
 class Pufferfish extends moveableObject {
     width = 80;
     height = 80;
-    speed = 0.40;
     IMG_IDLE = [
         '../img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
         '../img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim3.png',
@@ -15,6 +14,7 @@ class Pufferfish extends moveableObject {
         this.animateSwim();
         this.positionx = 200 + Math.random() * 500;
         this.positiony = 100 + Math.random() * 300;
+        this.speed = 0.20 + Math.random() * 0.25; //random speed
         this.movementLeft();
         
         
@@ -27,6 +27,4 @@ class Pufferfish extends moveableObject {
             this.currentImage++;
             }, 150);
     }
-  
-    
 }
