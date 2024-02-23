@@ -4,8 +4,8 @@ class Gameworld {
   barriers = [new Barrier()];
   backgroundObjects = [
     new BackgroundObject("../img/3. Background/Layers/5. Water/D1.png", 0, 0),
-    new BackgroundObject("../img/3. Background/Layers/4.Fondo 2/D.png",0, 80),
-    new BackgroundObject("../img/3. Background/Layers/3.Fondo 1/D.png",0, 80),
+    new BackgroundObject("../img/3. Background/Layers/4.Fondo 2/D.png", 0, 80),
+    new BackgroundObject("../img/3. Background/Layers/3.Fondo 1/D.png", 0, 80),
     new BackgroundObject("../img/3. Background/Layers/2. Floor/D.png", 0, 80),
   ];
   ctx;
@@ -21,9 +21,9 @@ class Gameworld {
   }
 
   setWorld() {
-    console.log("welt")
+    console.log("welt");
     this.character.world = this;
-    console.log(this.character.moveRight)
+    console.log(this.character.moveRight);
     this.character.moveRight();
     this.character.moveLeft();
     this.character.moveUp();
@@ -38,8 +38,6 @@ class Gameworld {
     this.addObjectsToMap(this.barriers);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
-   
-    
 
     //draw() repeat:
     let self = this;

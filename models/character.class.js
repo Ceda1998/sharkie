@@ -52,31 +52,27 @@ class Character extends moveableObject {
     }, 250);
   }
   animateSwim() {
-    
-      let i = this.currentImage % this.IMAGES_SWIM.length; //let I = 0 % 6;
-      let path = this.IMAGES_SWIM[i];
-      this.img = this.imageChache[path];
-      this.currentImage++;
-    
+    let i = this.currentImage % this.IMAGES_SWIM.length; //let I = 0 % 6;
+    let path = this.IMAGES_SWIM[i];
+    this.img = this.imageChache[path];
+    this.currentImage++;
   }
-  
+
   moveRight() {
     // Intervall for Movement
     setInterval(() => {
-        if (this.world.keyboard.RIGHT) {
-            this.positionx += 5;
-        }
+      if (this.world.keyboard.RIGHT) {
+        this.positionx += 5;
+      }
     }, 1000 / 60);
 
     // Intervall for Animation
     setInterval(() => {
-        if (this.world.keyboard.RIGHT) {
-            this.animateSwim();
-        }
-    }, 300); 
-
-   
-}
+      if (this.world.keyboard.RIGHT) {
+        this.animateSwim();
+      }
+    }, 300);
+  }
   moveLeft() {
     setInterval(() => {
       if (this.world.keyboard.LEFT) {
@@ -84,10 +80,10 @@ class Character extends moveableObject {
       }
     }, 1000 / 60);
     setInterval(() => {
-        if (this.world.keyboard.LEFT) {
-            this.animateSwim();
-        }
-    }, 300); 
+      if (this.world.keyboard.LEFT) {
+        this.animateSwim();
+      }
+    }, 300);
   }
   moveUp() {
     setInterval(() => {
@@ -96,10 +92,10 @@ class Character extends moveableObject {
       }
     }, 1000 / 60);
     setInterval(() => {
-        if (this.world.keyboard.UP) {
-            this.animateSwim();
-        }
-    }, 300); 
+      if (this.world.keyboard.UP) {
+        this.animateSwim();
+      }
+    }, 300);
   }
   moveDown() {
     setInterval(() => {
@@ -108,9 +104,9 @@ class Character extends moveableObject {
       }
     }, 1000 / 60);
     setInterval(() => {
-        if (this.world.keyboard.DOWN) {
-            this.animateSwim();
-        }
-    }, 300); 
+      if (this.world.keyboard.DOWN) {
+        this.animateSwim();
+      }
+    }, 300);
   }
 }
