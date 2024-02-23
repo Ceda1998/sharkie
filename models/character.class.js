@@ -42,30 +42,30 @@ class Character extends moveableObject {
    setInterval(() => {
     if (this.world.keyboard.RIGHT) {
         console.log("right");
-        this.positionx += 20;
+        this.positionx += 5;
       }
-   }, 100);
+   }, 1000 / 60);
   }
   moveLeft() {
     setInterval(() => {
      if (this.world.keyboard.LEFT) {
-         this.positionx -= 20;
+         this.positionx -= 5;
        }
-    }, 100);
+    }, 1000 / 60);
    }
    moveUp() {
     setInterval(() => {
      if (this.world.keyboard.UP) {
-         this.positiony -= 20;
+         this.positiony -= 5;
        }
-    }, 100);
+    }, 1000 / 60);
    }
    moveDown() {
     setInterval(() => {
      if (this.world.keyboard.DOWN) {
-         this.positiony += 20;
+         this.positiony += 5;
        }
-    }, 100);
+    }, 1000 / 60);
    }
 }
 
