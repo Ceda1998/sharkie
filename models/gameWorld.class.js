@@ -1,16 +1,12 @@
 class Gameworld {
   character = new Character();
-  enemies = [new Pufferfish(), new Pufferfish(), new Pufferfish()];
-  barriers = [new Barrier()];
-  backgroundObjects = [
-    new BackgroundObject("../img/3. Background/Layers/5. Water/D1.png", 0, 0),
-    new BackgroundObject("../img/3. Background/Layers/4.Fondo 2/D.png", 0, 80),
-    new BackgroundObject("../img/3. Background/Layers/3.Fondo 1/D.png", 0, 80),
-    new BackgroundObject("../img/3. Background/Layers/2. Floor/D.png", 0, 80),
-  ];
+  enemies = level1.enemies;
+  barriers = level1.barriers;
+  backgroundObjects = level1.backgroundObjects;
   ctx;
   canvas;
   keyboard;
+  camera_x = 0;
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -31,12 +27,15 @@ class Gameworld {
   draw() {
     //delete Canvas
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    //moveCamera 
+    this.ctx.translate(this.camera_x,0);
     //add Objects to Canvas
     this.addObjectsToMap(this.backgroundObjects);
     this.addObjectsToMap(this.barriers);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
-
+    //removeCamera 
+    this.ctx.translate(-this.camera_x,0);
     //draw() repeat:
     let self = this;
     requestAnimationFrame(function () {
