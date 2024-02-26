@@ -1,6 +1,8 @@
 class Character extends moveableObject {
   height = 200;
   width = 250;
+  positionx = 100;
+  swimming_sound = new Audio("./audio/swimming.mp3");
   IMAGES_IDLE = [
     "../img/1.Sharkie/1.IDLE/2.png",
     "../img/1.Sharkie/1.IDLE/3.png",
@@ -48,6 +50,7 @@ class Character extends moveableObject {
         let path = this.IMAGES_IDLE[i];
         this.img = this.imageChache[path];
         this.currentImage++;
+        this.world.camera_x = -this.positionx + 100;
       }
     }, 250);
   }
@@ -56,14 +59,18 @@ class Character extends moveableObject {
     let path = this.IMAGES_SWIM[i];
     this.img = this.imageChache[path];
     this.currentImage++;
+    this.swimming_sound .play();
   }
+
+//moveset:
 
   moveRight() {
     // Intervall for Movement
     setInterval(() => {
-      if (this.world.keyboard.RIGHT) {
+      if (this.world.keyboard.RIGHT && this.positionx < this.world.level.levelEndPositionX) {
         this.positionx += 5;
-        this.world.camera_x = -this.positionx;
+        this.otherDirection = false;
+        this.world.camera_x = -this.positionx + 100;
       }
     }, 1000 / 60);
 
@@ -71,16 +78,15 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.animateSwim();
-        this.otherDirection = false;
       }
     }, 300);
   }
   moveLeft() {
     setInterval(() => {
-      if (this.world.keyboard.LEFT) {
+      if (this.world.keyboard.LEFT & this.positionx > -200) {
         this.positionx -= 5;
         this.otherDirection = true;
-        this.world.camera_x = -this.positionx;
+        this.world.camera_x = -this.positionx + 100;
       }
     }, 1000 / 60);
     setInterval(() => {

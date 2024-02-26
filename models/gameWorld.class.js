@@ -1,8 +1,6 @@
 class Gameworld {
   character = new Character();
-  enemies = level1.enemies;
-  barriers = level1.barriers;
-  backgroundObjects = level1.backgroundObjects;
+  level = level1;
   ctx;
   canvas;
   keyboard;
@@ -30,10 +28,10 @@ class Gameworld {
     //moveCamera 
     this.ctx.translate(this.camera_x,0);
     //add Objects to Canvas
-    this.addObjectsToMap(this.backgroundObjects);
-    this.addObjectsToMap(this.barriers);
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.barriers);
     this.addToMap(this.character);
-    this.addObjectsToMap(this.enemies);
+    this.addObjectsToMap(this.level.enemies);
     //removeCamera 
     this.ctx.translate(-this.camera_x,0);
     //draw() repeat:
