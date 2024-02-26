@@ -21,9 +21,7 @@ class Gameworld {
   }
 
   setWorld() {
-    console.log("welt");
     this.character.world = this;
-    console.log(this.character.moveRight);
     this.character.moveRight();
     this.character.moveLeft();
     this.character.moveUp();
@@ -53,6 +51,22 @@ class Gameworld {
   }
 
   addToMap(mo) {
+    if (mo.otherDirection) {
+      this.flipImage(mo);
+    }
     this.ctx.drawImage(mo.img, mo.positionx, mo.positiony, mo.width, mo.height);
+    if (mo.otherDirection) {
+      this.flipImageBack(mo);
+    }
+  }
+  flipImage(mo) {
+    this.ctx.save();
+    this.ctx.translate(mo.width, 0);
+    this.ctx.scale(-1, 1);
+    mo.positionx = mo.positionx * -1;
+  }
+  flipImageBack(mo) {
+    mo.positionx = mo.positionx * -1;
+    this.ctx.restore();
   }
 }

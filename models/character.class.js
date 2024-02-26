@@ -63,6 +63,7 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.positionx += 5;
+        console.log(this.otherDirection)
       }
     }, 1000 / 60);
 
@@ -70,6 +71,7 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.animateSwim();
+        this.otherDirection = false;
       }
     }, 300);
   }
@@ -77,6 +79,8 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.LEFT) {
         this.positionx -= 5;
+        this.otherDirection = true;
+        console.log(this.otherDirection)
       }
     }, 1000 / 60);
     setInterval(() => {
