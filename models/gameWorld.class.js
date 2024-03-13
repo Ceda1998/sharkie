@@ -31,6 +31,7 @@ class Gameworld {
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.poison);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     //removeCamera 

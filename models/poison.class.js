@@ -1,6 +1,6 @@
 class Poison extends moveableObject {
-  width = 30;
-  height = 30;
+  width = 40;
+  height = 40;
   IMG_POISON = [
     "../img/4. Marcadores/Posión/Animada/1.png",
     "../img/4. Marcadores/Posión/Animada/2.png",
@@ -11,9 +11,10 @@ class Poison extends moveableObject {
     "../img/4. Marcadores/Posión/Animada/7.png",
   ];
   constructor() {
-    super().loadImage(this.IMG_COINS[0]);
-    this.loadImages(this.IMG_COINS);
-    this.animateCollectables(this.IMG_COINS);
-    this.positionx = 500;
+    super().loadImage(this.IMG_POISON[0]);
+    this.loadImages(this.IMG_POISON);
+    this.animateCollectables(this.IMG_POISON);
+    this.positionx = 200 + Math.random() * 500;
+    this.positiony = 100 + Math.random() * 300;
   }
 }
