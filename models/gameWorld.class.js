@@ -30,6 +30,7 @@ class Gameworld {
     //add Objects to Canvas
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addObjectsToMap(this.level.barriers);
+    this.addObjectsToMap(this.level.coins);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     //removeCamera 

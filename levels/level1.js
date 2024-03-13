@@ -1,6 +1,7 @@
 const level1 = new Level(
-    [new Pufferfish(), new Pufferfish(), new Pufferfish()],
+    [new Pufferfish(), new Pufferfish(), new Pufferfish(), new Endboss()],
     [new Barrier()],
+    [new Coins()],
     [
         new BackgroundObject("../img/3. Background/Layers/5. Water/D2.png", -720, 0),
         new BackgroundObject("../img/3. Background/Layers/4.Fondo 2/D.png", -720, 80),
@@ -32,5 +33,6 @@ const level1 = new Level(
         new BackgroundObject("../img/3. Background/Layers/3.Fondo 1/D.png", 2500, 80),
         new BackgroundObject("../img/3. Background/Layers/2. Floor/D.png", 2500, 80),
       ]
+     
 );
 

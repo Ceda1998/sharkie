@@ -27,4 +27,5 @@ class Pufferfish extends moveableObject {
       this.currentImage++;
     }, 150);
   }
+
 }
