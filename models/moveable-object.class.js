@@ -7,6 +7,9 @@ class moveableObject {
   currentImage = 0;
   imageChache = {};
   speed;
+  health = 100;
+  poisonBottles = 0;
+  coins = 0;
   otherDirection = false;
 
   loadImage(path) {

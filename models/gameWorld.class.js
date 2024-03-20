@@ -28,9 +28,18 @@ class Gameworld {
       this.level.enemies.forEach(enemy => {
         if(this.character.isColliding(enemy)){
           console.log("collision with Character", enemy)
+          this.character.health -= 5;
+          console.log(this.character.health)
+          this.isDead();
         }
       });
     }, 200);
+  }
+
+  isDead() {
+    if (this.character.health <= 0) {
+      console.log("tot");
+    }
   }
 
   draw() {
