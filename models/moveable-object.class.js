@@ -27,11 +27,13 @@ class moveableObject {
   }
 
   drawFrame(ctx) {
+    if(this instanceof Character || this instanceof Pufferfish) {
     ctx.beginPath();
     ctx.lineWidth = "5";
     ctx.strokeStyle = "blue";
     ctx.rect(this.positionx, this.positiony, this.width, this.height);
     ctx.stroke();
+    }
   }
 
   movementLeft() {

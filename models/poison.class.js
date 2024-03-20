@@ -1,6 +1,6 @@
 class Poison extends moveableObject {
-  width = 40;
-  height = 40;
+  width = 50;
+  height = 60;
   IMG_POISON = [
     "../img/4. Marcadores/Posión/Animada/1.png",
     "../img/4. Marcadores/Posión/Animada/2.png",

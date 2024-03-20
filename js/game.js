@@ -9,7 +9,6 @@ function init() {
 }
 
 document.addEventListener("keydown", (event) => {
-  console.log(event);
   if (event.keyCode === 39) {
     keyboard.RIGHT = true;
   }
@@ -28,21 +27,19 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("keyup", (event) => {
-    console.log(event);
-    if (event.keyCode === 39) {
-      keyboard.RIGHT = false;
-    }
-    if (event.keyCode === 37) {
-      keyboard.LEFT = false;
-      console.log(keyboard.LEFT);
-    }
-    if (event.keyCode === 40) {
-      keyboard.DOWN = false;
-    }
-    if (event.keyCode === 38) {
-      keyboard.UP = false;
-    }
-    if (event.keyCode === 32) {
-      keyboard.SHOOT = false;
-    }
-  });
+  if (event.keyCode === 39) {
+    keyboard.RIGHT = false;
+  }
+  if (event.keyCode === 37) {
+    keyboard.LEFT = false;
+  }
+  if (event.keyCode === 40) {
+    keyboard.DOWN = false;
+  }
+  if (event.keyCode === 38) {
+    keyboard.UP = false;
+  }
+  if (event.keyCode === 32) {
+    keyboard.SHOOT = false;
+  }
+});
