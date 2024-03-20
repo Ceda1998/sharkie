@@ -30,44 +30,65 @@ class Character extends moveableObject {
     "../img/1.Sharkie/3.Swim/5.png",
     "../img/1.Sharkie/3.Swim/6.png",
   ];
+
+  IMAGES_DEAD = [
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00001.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00002.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00003.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00004.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00005.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00006.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00007.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00008.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00009.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png",
+    "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png",
+  ];
   world;
   constructor() {
     super().loadImage("../img/1.Sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_SWIM);
+    this.loadImages(this.IMAGES_DEAD);
+    this.beDead();
     this.animateIdle();
+    this.endGame();
   }
-
   animateIdle() {
     setInterval(() => {
-      if (
-        !this.world.keyboard.LEFT &&
-        !this.world.keyboard.RIGHT &&
-        !this.world.keyboard.UP &&
-        !this.world.keyboard.DOWN
-      ) {
-        let i = this.currentImage % this.IMAGES_IDLE.length; //let I = 0 % 6;
-        let path = this.IMAGES_IDLE[i];
-        this.img = this.imageChache[path];
-        this.currentImage++;
-        this.world.camera_x = -this.positionx + 100;
-      }
-    }, 250);
-  }
+        if (!this.isDead() && !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { 
+            let i = this.currentImage % this.IMAGES_IDLE.length;
+            let path = this.IMAGES_IDLE[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
+            this.world.camera_x = -this.positionx + 100;
+        }
+    }, 100);
+}
   animateSwim() {
     let i = this.currentImage % this.IMAGES_SWIM.length; //let I = 0 % 6;
     let path = this.IMAGES_SWIM[i];
     this.img = this.imageChache[path];
     this.currentImage++;
-    this.swimming_sound .play();
+    this.swimming_sound.play();
+  }
+  animateDead() {
+    let i = this.currentImage % this.IMAGES_DEAD.length; //let I = 0 % 6;
+    let path = this.IMAGES_DEAD[i];
+    this.img = this.imageChache[path];
+    this.currentImage++;
   }
 
-//moveset:
+  //moveset:
 
   moveRight() {
     // Intervall for Movement
     setInterval(() => {
-      if (this.world.keyboard.RIGHT && this.positionx < this.world.level.levelEndPositionX) {
+      if (
+        this.world.keyboard.RIGHT &&
+        this.positionx < this.world.level.levelEndPositionX
+      ) {
         this.positionx += 5;
         this.otherDirection = false;
         this.world.camera_x = -this.positionx + 100;
@@ -83,7 +104,7 @@ class Character extends moveableObject {
   }
   moveLeft() {
     setInterval(() => {
-      if (this.world.keyboard.LEFT & this.positionx > -200) {
+      if (this.world.keyboard.LEFT & (this.positionx > -200)) {
         this.positionx -= 5;
         this.otherDirection = true;
         this.world.camera_x = -this.positionx + 100;
@@ -118,5 +139,13 @@ class Character extends moveableObject {
         this.animateSwim();
       }
     }, 300);
+  }
+
+  beDead() {
+    setInterval(() => {
+      if (this.isDead()) {
+        this.animateDead();
+      }
+    }, 200);
   }
 }

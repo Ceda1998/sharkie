@@ -53,6 +53,23 @@ class moveableObject {
       this.positiony + this.positiony <= obj.positiony + obj.height
     );
   }
+  getDamage() {
+    
+    this.health -= 5;
+    if(this.health < 0) {
+      this.health = 0;
+    }
+  }
+
+  isDead() {
+      return this.health == 0;
+  }
+
+  endGame() {
+    if (this.health == 0) {
+      stopGame();
+    }
+  }
 
   movementLeft() {
     setInterval(() => {

@@ -25,21 +25,14 @@ class Gameworld {
 
   checkCollisions() {
     setInterval(() => {
-      this.level.enemies.forEach(enemy => {
-        if(this.character.isColliding(enemy)){
-          console.log("collision with Character", enemy)
-          this.character.health -= 5;
+      this.level.enemies.forEach((enemy) => {
+        if (this.character.isColliding(enemy)) {
+          this.character.getDamage();
           console.log(this.character.health)
-          this.isDead();
+          console.log(this.character.isDead())
         }
       });
     }, 200);
-  }
-
-  isDead() {
-    if (this.character.health <= 0) {
-      console.log("tot");
-    }
   }
 
   draw() {
@@ -91,4 +84,5 @@ class Gameworld {
     mo.positionx = mo.positionx * -1;
     this.ctx.restore();
   }
+  
 }
