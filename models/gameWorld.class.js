@@ -12,6 +12,7 @@ class Gameworld {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
+    this.checkCollisions();
   }
 
   setWorld() {
@@ -20,6 +21,16 @@ class Gameworld {
     this.character.moveLeft();
     this.character.moveUp();
     this.character.moveDown();
+  }
+
+  checkCollisions() {
+    setInterval(() => {
+      this.level.enemies.forEach(enemy => {
+        if(this.character.isColliding(enemy)){
+          console.log("collision with Character", enemy)
+        }
+      });
+    }, 200);
   }
 
   draw() {

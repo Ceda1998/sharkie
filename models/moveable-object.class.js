@@ -23,17 +23,32 @@ class moveableObject {
   }
 
   draw(ctx) {
-    ctx.drawImage(this.img, this.positionx, this.positiony, this.width, this.height);
+    ctx.drawImage(
+      this.img,
+      this.positionx,
+      this.positiony,
+      this.width,
+      this.height
+    );
   }
 
   drawFrame(ctx) {
-    if(this instanceof Character || this instanceof Pufferfish) {
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "blue";
-    ctx.rect(this.positionx, this.positiony, this.width, this.height);
-    ctx.stroke();
+    if (this instanceof Character || this instanceof Pufferfish) {
+      ctx.beginPath();
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "blue";
+      ctx.rect(this.positionx, this.positiony, this.width, this.height);
+      ctx.stroke();
     }
+  }
+
+  isColliding(obj) {
+    return (
+      this.positionx + this.width >= obj.positionx &&
+      this.positionx <= obj.positionx + obj.width &&
+      this.positiony + this.positiony + this.height >= obj.positiony &&
+      this.positiony + this.positiony <= obj.positiony + obj.height
+    );
   }
 
   movementLeft() {
