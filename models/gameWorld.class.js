@@ -25,17 +25,18 @@ class Gameworld {
   draw() {
     //delete Canvas
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    //moveCamera 
-    this.ctx.translate(this.camera_x,0);
+    //moveCamera
+    this.ctx.translate(this.camera_x, 0);
     //add Objects to Canvas
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.poison);
     this.addToMap(this.character);
+
     this.addObjectsToMap(this.level.enemies);
-    //removeCamera 
-    this.ctx.translate(-this.camera_x,0);
+    //removeCamera
+    this.ctx.translate(-this.camera_x, 0);
     //draw() repeat:
     let self = this;
     requestAnimationFrame(function () {
@@ -53,7 +54,9 @@ class Gameworld {
     if (mo.otherDirection) {
       this.flipImage(mo);
     }
-    this.ctx.drawImage(mo.img, mo.positionx, mo.positiony, mo.width, mo.height);
+    mo.draw(this.ctx);
+    mo.drawFrame(this.ctx);
+
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

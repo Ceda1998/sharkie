@@ -22,6 +22,18 @@ class moveableObject {
     });
   }
 
+  draw(ctx) {
+    ctx.drawImage(this.img, this.positionx, this.positiony, this.width, this.height);
+  }
+
+  drawFrame(ctx) {
+    ctx.beginPath();
+    ctx.lineWidth = "5";
+    ctx.strokeStyle = "blue";
+    ctx.rect(this.positionx, this.positiony, this.width, this.height);
+    ctx.stroke();
+  }
+
   movementLeft() {
     setInterval(() => {
       this.positionx -= this.speed;
