@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+
 function init() {
   canvas = document.getElementById("canvas");
   world = new Gameworld(canvas, keyboard);
@@ -47,4 +48,5 @@ document.addEventListener("keyup", (event) => {
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
+
 

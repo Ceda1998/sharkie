@@ -8,6 +8,7 @@ class moveableObject {
   imageChache = {};
   speed;
   health = 100;
+  lastHit = 0;
   poisonBottles = 0;
   coins = 0;
   otherDirection = false;
@@ -63,8 +64,16 @@ class moveableObject {
       setTimeout(() => {
         this.stopGame();
       }, 1000);
-      
+    } else {
+      this.lastHit = new Date().getTime();
     }
+  }
+
+  isHurt() {
+    let timepassed = new Date().getTime() - this.lastHit; //difference in ms
+    timepassed = timepassed / 1000; //difference in seconds
+    console.log(timepassed)
+    return timepassed < 5; //get hit in last 5 sec.
   }
 
   isDead() {
@@ -96,4 +105,5 @@ class moveableObject {
     clearAllIntervals();
     console.log("Beendet!");
   }
+
 }

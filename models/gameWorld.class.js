@@ -13,7 +13,6 @@ class Gameworld {
     this.draw();
     this.setWorld();
     this.checkCollisions();
-    this.endGame();
   }
 
   setWorld() {

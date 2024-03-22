@@ -62,9 +62,9 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.beDead();
-    this.animateIdle();
-   
   }
+  
+
   animateIdle() {
     setInterval(() => {
         if (!this.isDead() && !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { 
@@ -85,12 +85,10 @@ class Character extends moveableObject {
   }
 
   animateHurt() {
-    if (this.getDamage) {
       let i = this.currentImage % this.IMAGES_HURT.length; //let I = 0 % 6;
       let path = this.IMAGES_HURT[i];
       this.img = this.imageChache[path];
       this.currentImage++;
-    }
   }
   animateDead() {
     let i = this.currentImage % this.IMAGES_DEAD.length; //let I = 0 % 6;
@@ -119,7 +117,7 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.animateSwim();
-      }
+      } 
     }, 300);
   }
   moveLeft() {
@@ -160,6 +158,14 @@ class Character extends moveableObject {
       }
     }, 300);
   }
+
+showIsHurt() {
+  setInterval(() => {
+    if (this.isHurt()) {
+      console.log("verletzt!!")
+      this.animateHurt();
+  }}, 50);
+}
 
   beDead() {
      setInterval(() => {
