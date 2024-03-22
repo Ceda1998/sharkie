@@ -3,6 +3,7 @@ class Character extends moveableObject {
   width = 250;
   positionx = 100;
   swimming_sound = new Audio("./audio/swimming.mp3");
+  dying_sound = new Audio("./audio/gameOver.mp3")
   IMAGES_IDLE = [
     "../img/1.Sharkie/1.IDLE/2.png",
     "../img/1.Sharkie/1.IDLE/3.png",
@@ -53,7 +54,7 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_DEAD);
     this.beDead();
     this.animateIdle();
-    this.endGame();
+   
   }
   animateIdle() {
     setInterval(() => {
@@ -142,9 +143,11 @@ class Character extends moveableObject {
   }
 
   beDead() {
-    setInterval(() => {
+     let deadinterval = setInterval(() => {
       if (this.isDead()) {
         this.animateDead();
+        this.dying_sound.play();
+        
       }
     }, 200);
   }

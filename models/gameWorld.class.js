@@ -13,6 +13,7 @@ class Gameworld {
     this.draw();
     this.setWorld();
     this.checkCollisions();
+    this.endGame();
   }
 
   setWorld() {
@@ -33,6 +34,12 @@ class Gameworld {
         }
       });
     }, 200);
+  }
+
+  endGame() {
+    if (this.character.health == 0) {
+      stopGame();
+    }
   }
 
   draw() {

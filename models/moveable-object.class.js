@@ -11,6 +11,7 @@ class moveableObject {
   poisonBottles = 0;
   coins = 0;
   otherDirection = false;
+  getDamage_sound = new Audio("./audio/getDamage.mp3");
 
   loadImage(path) {
     this.img = new Image();
@@ -56,6 +57,7 @@ class moveableObject {
   getDamage() {
     
     this.health -= 5;
+    this.getDamage_sound.play();
     if(this.health < 0) {
       this.health = 0;
     }
@@ -63,12 +65,6 @@ class moveableObject {
 
   isDead() {
       return this.health == 0;
-  }
-
-  endGame() {
-    if (this.health == 0) {
-      stopGame();
-    }
   }
 
   movementLeft() {
