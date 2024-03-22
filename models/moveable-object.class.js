@@ -60,6 +60,10 @@ class moveableObject {
     this.getDamage_sound.play();
     if(this.health < 0) {
       this.health = 0;
+      setTimeout(() => {
+        this.stopGame();
+      }, 1000);
+      
     }
   }
 
@@ -87,5 +91,9 @@ class moveableObject {
       this.img = this.imageChache[path];
       this.currentImage++;
     }, 400);
+  }
+  stopGame() {
+    clearAllIntervals();
+    console.log("Beendet!");
   }
 }

@@ -36,11 +36,6 @@ class Gameworld {
     }, 200);
   }
 
-  endGame() {
-    if (this.character.health == 0) {
-      stopGame();
-    }
-  }
 
   draw() {
     //delete Canvas

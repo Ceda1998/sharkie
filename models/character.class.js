@@ -143,7 +143,7 @@ class Character extends moveableObject {
   }
 
   beDead() {
-     let deadinterval = setInterval(() => {
+     setInterval(() => {
       if (this.isDead()) {
         this.animateDead();
         this.dying_sound.play();
@@ -151,4 +151,7 @@ class Character extends moveableObject {
       }
     }, 200);
   }
+
 }
+
+
