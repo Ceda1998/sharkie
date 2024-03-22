@@ -32,6 +32,14 @@ class Character extends moveableObject {
     "../img/1.Sharkie/3.Swim/6.png",
   ];
 
+  IMAGES_HURT = [
+    "img/1.Sharkie/5.Hurt/1.Poisoned/1.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/2.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/3.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
+    "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
+  ]
+
   IMAGES_DEAD = [
     "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png",
     "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00001.png",
@@ -51,6 +59,7 @@ class Character extends moveableObject {
     super().loadImage("../img/1.Sharkie/1.IDLE/1.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_SWIM);
+    this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.beDead();
     this.animateIdle();
@@ -74,11 +83,21 @@ class Character extends moveableObject {
     this.currentImage++;
     this.swimming_sound.play();
   }
+
+  animateHurt() {
+    if (this.getDamage) {
+      let i = this.currentImage % this.IMAGES_HURT.length; //let I = 0 % 6;
+      let path = this.IMAGES_HURT[i];
+      this.img = this.imageChache[path];
+      this.currentImage++;
+    }
+  }
   animateDead() {
     let i = this.currentImage % this.IMAGES_DEAD.length; //let I = 0 % 6;
     let path = this.IMAGES_DEAD[i];
     this.img = this.imageChache[path];
     this.currentImage++;
+    this.getDamage_sound.pause();
   }
 
   //moveset:
