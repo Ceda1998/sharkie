@@ -61,7 +61,6 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_SWIM);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
-    this.beDead();
   }
   
 
@@ -162,7 +161,6 @@ class Character extends moveableObject {
 showIsHurt() {
   setInterval(() => {
     if (this.isHurt()) {
-      console.log("verletzt!!")
       this.animateHurt();
   }}, 50);
 }
@@ -172,9 +170,9 @@ showIsHurt() {
       if (this.isDead()) {
         this.animateDead();
         this.dying_sound.play();
-        
+        clearAllIntervals();
       }
-    }, 200);
+    }, 50);
   }
 
 }

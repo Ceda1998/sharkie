@@ -5,6 +5,7 @@ class Gameworld {
   canvas;
   keyboard;
   camera_x = 0;
+  statusBar = new StatusBar();
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -21,6 +22,9 @@ class Gameworld {
     this.character.moveLeft();
     this.character.moveUp();
     this.character.moveDown();
+    this.character.animateIdle();
+    this.character.showIsHurt();
+    this.character.beDead();
   }
 
   checkCollisions() {
@@ -28,8 +32,7 @@ class Gameworld {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.getDamage();
-          console.log(this.character.health)
-          console.log(this.character.isDead())
+          this.statusBar.setPercentage(this.character.health)
         }
       });
     }, 200);
@@ -39,13 +42,17 @@ class Gameworld {
   draw() {
     //delete Canvas
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    //moveCamera
-    this.ctx.translate(this.camera_x, 0);
+    
+    this.ctx.translate(this.camera_x, 0); //moveCamera forward
     //add Objects to Canvas
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.poison);
+    this.ctx.translate(-this.camera_x, 0); //moveCamera back
+    //--------- space for fixed objects in canvas
+    this.addToMap(this.statusBar);
+    this.ctx.translate(this.camera_x, 0); //moveCamera forward
     this.addToMap(this.character);
 
     this.addObjectsToMap(this.level.enemies);

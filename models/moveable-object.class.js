@@ -1,11 +1,4 @@
-class moveableObject {
-  positionx = 10;
-  positiony = 10;
-  width;
-  height;
-  img;
-  currentImage = 0;
-  imageChache = {};
+class moveableObject extends DrawableObject {
   speed;
   health = 100;
   lastHit = 0;
@@ -14,39 +7,7 @@ class moveableObject {
   otherDirection = false;
   getDamage_sound = new Audio("./audio/getDamage.mp3");
 
-  loadImage(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  loadImages(arr) {
-    arr.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageChache[path] = img;
-    });
-  }
-
-  draw(ctx) {
-    ctx.drawImage(
-      this.img,
-      this.positionx,
-      this.positiony,
-      this.width,
-      this.height
-    );
-  }
-
-  drawFrame(ctx) {
-    if (this instanceof Character || this instanceof Pufferfish) {
-      ctx.beginPath();
-      ctx.lineWidth = "5";
-      ctx.strokeStyle = "blue";
-      ctx.rect(this.positionx, this.positiony, this.width, this.height);
-      ctx.stroke();
-    }
-  }
-
+  
   isColliding(obj) {
     return (
       this.positionx + this.width >= obj.positionx &&
@@ -72,8 +33,7 @@ class moveableObject {
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; //difference in ms
     timepassed = timepassed / 1000; //difference in seconds
-    console.log(timepassed)
-    return timepassed < 5; //get hit in last 5 sec.
+    return timepassed < 1; //get hit in last 5 sec.
   }
 
   isDead() {
@@ -103,7 +63,6 @@ class moveableObject {
   }
   stopGame() {
     clearAllIntervals();
-    console.log("Beendet!");
   }
 
 }
