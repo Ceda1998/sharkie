@@ -6,6 +6,7 @@ class Gameworld {
   keyboard;
   camera_x = 0;
   statusBar = new StatusBar();
+  coinBar = new CoinBar();
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -49,10 +50,13 @@ class Gameworld {
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.poison);
+
     this.ctx.translate(-this.camera_x, 0); //moveCamera back
     //--------- space for fixed objects in canvas
     this.addToMap(this.statusBar);
+    this.addToMap(this.coinBar);
     this.ctx.translate(this.camera_x, 0); //moveCamera forward
+    //add character to map -->
     this.addToMap(this.character);
 
     this.addObjectsToMap(this.level.enemies);
