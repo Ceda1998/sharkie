@@ -34,19 +34,21 @@ class Gameworld {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.getDamage();
-          this.statusBar.setPercentage(this.character.health)
+          this.statusBar.setPercentage(this.character.health);
         }
       });
       this.level.coins.forEach((coin) => {
         if (this.character.isColliding(coin)) {
           this.character.getCoins();
-          this.coinBar.setPercentageCoin(this.character.coins)
+          this.coinBar.setPercentageCoin(this.character.coins);
         }
       });
       this.level.poison.forEach((poison) => {
         if (this.character.isColliding(poison)) {
           this.character.getPoison();
-          this.poisonBar.setPercentagePoison(this.character.poisonBottles)
+          this.poisonBar.setPercentagePoison(this.character.poisonBottles);
+         this.level.poison.splice(0,1);
+         console.log(this.level.poison)
         }
       });
     }, 200);

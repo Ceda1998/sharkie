@@ -46,6 +46,11 @@ class moveableObject extends DrawableObject {
     console.log(this.poisonBottles);
   }
 
+  outOfCanvas() {
+    this.positionx = -100000;
+    this.positiony = -100000;
+  }
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; //difference in ms
     timepassed = timepassed / 1000; //difference in seconds
