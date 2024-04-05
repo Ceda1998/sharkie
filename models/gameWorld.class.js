@@ -37,6 +37,12 @@ class Gameworld {
           this.statusBar.setPercentage(this.character.health)
         }
       });
+      this.level.coins.forEach((coin) => {
+        if (this.character.isColliding(coin)) {
+          this.character.getCoins();
+          this.coinBar.setPercentageCoin(this.character.coins)
+        }
+      });
     }, 200);
   }
 

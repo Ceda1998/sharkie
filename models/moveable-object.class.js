@@ -30,6 +30,14 @@ class moveableObject extends DrawableObject {
     }
   }
 
+  getCoins() {
+    this.coins += 5;
+    if(this.coins >= 100) {
+      this.coins = 100;
+    }
+    console.log(this.coins);
+  }
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; //difference in ms
     timepassed = timepassed / 1000; //difference in seconds

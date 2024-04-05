@@ -105,7 +105,7 @@ class Character extends moveableObject {
       ) {
         this.animateIdle();
     }
-    }, 100);
+    }, 160);
    
 }
 
