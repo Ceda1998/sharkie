@@ -3,7 +3,7 @@ class Character extends moveableObject {
   width = 250;
   positionx = 100;
   swimming_sound = new Audio("./audio/swimming.mp3");
-  dying_sound = new Audio("./audio/gameOver.mp3")
+  dying_sound = new Audio("./audio/gameOver.mp3");
   IMAGES_IDLE = [
     "../img/1.Sharkie/1.IDLE/2.png",
     "../img/1.Sharkie/1.IDLE/3.png",
@@ -38,7 +38,7 @@ class Character extends moveableObject {
     "img/1.Sharkie/5.Hurt/1.Poisoned/3.png",
     "img/1.Sharkie/5.Hurt/1.Poisoned/4.png",
     "img/1.Sharkie/5.Hurt/1.Poisoned/5.png",
-  ]
+  ];
 
   IMAGES_DEAD = [
     "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00000.png",
@@ -56,25 +56,31 @@ class Character extends moveableObject {
   ];
   world;
   constructor() {
-    super().loadImage("../img/1.Sharkie/1.IDLE/1.png");
+    super().loadImage("./img/1.Sharkie/1.IDLE/2.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_SWIM);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
   }
-  
-
   animateIdle() {
-    setInterval(() => {
-        if (!this.isDead() && !this.world.keyboard.LEFT && !this.world.keyboard.RIGHT && !this.world.keyboard.UP && !this.world.keyboard.DOWN) { 
-            let i = this.currentImage % this.IMAGES_IDLE.length;
-            let path = this.IMAGES_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-            this.world.camera_x = -this.positionx + 100;
-        }
-    }, 100);
-}
+    let i = this.currentImage % this.IMAGES_IDLE.length;
+    let path = this.IMAGES_IDLE[i];
+    this.img = this.imageCache[path];
+    this.currentImage++;
+    this.world.camera_x = -this.positionx + 100;
+  }
+  idleStart() {
+      if (
+        !this.isDead() &&
+        !this.world.keyboard.LEFT &&
+        !this.world.keyboard.RIGHT &&
+        !this.world.keyboard.UP &&
+        !this.world.keyboard.DOWN
+      ) {
+        animateIdle();
+      }
+  }
+
   animateSwim() {
     let i = this.currentImage % this.IMAGES_SWIM.length; //let I = 0 % 6;
     let path = this.IMAGES_SWIM[i];
@@ -84,10 +90,10 @@ class Character extends moveableObject {
   }
 
   animateHurt() {
-      let i = this.currentImage % this.IMAGES_HURT.length; //let I = 0 % 6;
-      let path = this.IMAGES_HURT[i];
-      this.img = this.imageChache[path];
-      this.currentImage++;
+    let i = this.currentImage % this.IMAGES_HURT.length; //let I = 0 % 6;
+    let path = this.IMAGES_HURT[i];
+    this.img = this.imageChache[path];
+    this.currentImage++;
   }
   animateDead() {
     let i = this.currentImage % this.IMAGES_DEAD.length; //let I = 0 % 6;
@@ -116,7 +122,7 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
         this.animateSwim();
-      } 
+      }
     }, 300);
   }
   moveLeft() {
@@ -158,15 +164,16 @@ class Character extends moveableObject {
     }, 300);
   }
 
-showIsHurt() {
-  setInterval(() => {
-    if (this.isHurt()) {
-      this.animateHurt();
-  }}, 50);
-}
+  showIsHurt() {
+    setInterval(() => {
+      if (this.isHurt()) {
+        this.animateHurt();
+      }
+    }, 50);
+  }
 
   beDead() {
-     setInterval(() => {
+    setInterval(() => {
       if (this.isDead()) {
         this.animateDead();
         this.dying_sound.play();
@@ -174,7 +181,4 @@ showIsHurt() {
       }
     }, 50);
   }
-
 }
-
-

@@ -9,12 +9,12 @@ class PoisonBar extends DrawableObject {
       "./img/4. Marcadores/green/poisoned bubbles/100_ copia 3.png", //5
     ];
   
-    percentagePoison = 100;
+    percentagePoison = 0;
   
     constructor() {
       super();
       this.loadImages(this.IMAGES_POISONBAR);
-      this.setPercentagePoison(100);
+      this.setPercentagePoison(0);
       this.positionx = 20;
       this.positiony = 70;
       this.width = 250;

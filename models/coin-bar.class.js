@@ -9,12 +9,12 @@ class CoinBar extends DrawableObject {
       "./img/4. Marcadores/green/Coin/100_ copia 4.png", //5
     ];
   
-    percentageCoins = 100;
+    percentageCoins = 0;
   
     constructor() {
       super();
       this.loadImages(this.IMAGES_COINBAR);
-      this.setPercentageCoin(100);
+      this.setPercentageCoin(0);
       this.positionx = 20;
       this.positiony = 25;
       this.width = 250;
