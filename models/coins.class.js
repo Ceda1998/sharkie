@@ -14,7 +14,7 @@ class Coins extends moveableObject {
     super().loadImage(this.IMG_COINS[0]);
     this.loadImages(this.IMG_COINS);
     this.animateCollectables(this.IMG_COINS);
-    this.positionx = 200 + Math.random() * 500;
+    this.positionx = 300 + Math.random() * 500;
     this.positiony = 100 + Math.random() * 300;
   }
  

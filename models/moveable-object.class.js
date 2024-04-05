@@ -39,16 +39,11 @@ class moveableObject extends DrawableObject {
   }
 
   getPoison() {
-    this.poisonBottles += 5;
+    this.poisonBottles += 21;
     if(this.poisonBottles >= 100) {
       this.poisonBottles = 100;
     }
     console.log(this.poisonBottles);
-  }
-
-  outOfCanvas() {
-    this.positionx = -100000;
-    this.positiony = -100000;
   }
 
   isHurt() {

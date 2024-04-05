@@ -41,7 +41,7 @@ class Gameworld {
         if (this.character.isColliding(coin)) {
           this.character.getCoins();
           this.coinBar.setPercentageCoin(this.character.coins);
-          this.level.coins.splice(index, 1); // Entferne die Münze aus dem Array
+          this.level.coins.splice(index, 1); 
           console.log(this.level.coins);
         }
       });
@@ -49,7 +49,7 @@ class Gameworld {
         if (this.character.isColliding(poison)) {
           this.character.getPoison();
           this.poisonBar.setPercentagePoison(this.character.poisonBottles);
-          this.level.poison.splice(index, 1); // Entferne das Gift-Objekt aus dem Array
+          this.level.poison.splice(index, 1); 
           console.log(this.level.poison);
         }
       });

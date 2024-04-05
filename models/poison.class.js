@@ -14,7 +14,7 @@ class Poison extends moveableObject {
     super().loadImage(this.IMG_POISON[0]);
     this.loadImages(this.IMG_POISON);
     this.animateCollectables(this.IMG_POISON);
-    this.positionx = 200 + Math.random() * 500;
+    this.positionx = 300 + Math.random() * 500;
     this.positiony = 100 + Math.random() * 300;
   }
 }

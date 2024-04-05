@@ -14,7 +14,7 @@ class Pufferfish extends moveableObject {
     );
     this.loadImages(this.IMG_IDLE);
     this.animateSwim();
-    this.positionx = 200 + Math.random() * 500;
+    this.positionx = 500 + Math.random() * 3000;
     this.positiony = 100 + Math.random() * 300;
     this.speed = 0.2 + Math.random() * 0.25; //random speed
     this.movementLeft();
