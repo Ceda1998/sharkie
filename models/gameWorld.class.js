@@ -37,18 +37,20 @@ class Gameworld {
           this.statusBar.setPercentage(this.character.health);
         }
       });
-      this.level.coins.forEach((coin) => {
+      this.level.coins.forEach((coin, index) => {
         if (this.character.isColliding(coin)) {
           this.character.getCoins();
           this.coinBar.setPercentageCoin(this.character.coins);
+          this.level.coins.splice(index, 1); // Entferne die Münze aus dem Array
+          console.log(this.level.coins);
         }
       });
-      this.level.poison.forEach((poison) => {
+      this.level.poison.forEach((poison, index) => {
         if (this.character.isColliding(poison)) {
           this.character.getPoison();
           this.poisonBar.setPercentagePoison(this.character.poisonBottles);
-         this.level.poison.splice(0,1);
-         console.log(this.level.poison)
+          this.level.poison.splice(index, 1); // Entferne das Gift-Objekt aus dem Array
+          console.log(this.level.poison);
         }
       });
     }, 200);
