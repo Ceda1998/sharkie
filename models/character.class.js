@@ -180,9 +180,10 @@ class Character extends moveableObject {
     setInterval(() => {
       if (this.isDead()) {
         this.animateDead();
+        this.dying_sound.playbackRate = 0.5;
         this.dying_sound.play();
         clearAllIntervals();
       }
-    }, 50);
+    }, 70);
   }
 }
