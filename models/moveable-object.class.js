@@ -38,6 +38,14 @@ class moveableObject extends DrawableObject {
     console.log(this.coins);
   }
 
+  getPoison() {
+    this.poisonBottles += 5;
+    if(this.poisonBottles >= 100) {
+      this.poisonBottles = 100;
+    }
+    console.log(this.poisonBottles);
+  }
+
   isHurt() {
     let timepassed = new Date().getTime() - this.lastHit; //difference in ms
     timepassed = timepassed / 1000; //difference in seconds

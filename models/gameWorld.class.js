@@ -43,6 +43,12 @@ class Gameworld {
           this.coinBar.setPercentageCoin(this.character.coins)
         }
       });
+      this.level.poison.forEach((poison) => {
+        if (this.character.isColliding(poison)) {
+          this.character.getPoison();
+          this.poisonBar.setPercentagePoison(this.character.poisonBottles)
+        }
+      });
     }, 200);
   }
 
