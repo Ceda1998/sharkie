@@ -62,27 +62,17 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
   }
+
   animateIdle() {
     let i = this.currentImage % this.IMAGES_IDLE.length;
     let path = this.IMAGES_IDLE[i];
-    this.img = this.imageCache[path];
+    this.img = this.imageChache[path];
     this.currentImage++;
     this.world.camera_x = -this.positionx + 100;
   }
-  idleStart() {
-      if (
-        !this.isDead() &&
-        !this.world.keyboard.LEFT &&
-        !this.world.keyboard.RIGHT &&
-        !this.world.keyboard.UP &&
-        !this.world.keyboard.DOWN
-      ) {
-        animateIdle();
-      }
-  }
 
   animateSwim() {
-    let i = this.currentImage % this.IMAGES_SWIM.length; //let I = 0 % 6;
+    let i = this.currentImage % this.IMAGES_SWIM.length; 
     let path = this.IMAGES_SWIM[i];
     this.img = this.imageChache[path];
     this.currentImage++;
@@ -90,13 +80,13 @@ class Character extends moveableObject {
   }
 
   animateHurt() {
-    let i = this.currentImage % this.IMAGES_HURT.length; //let I = 0 % 6;
+    let i = this.currentImage % this.IMAGES_HURT.length; 
     let path = this.IMAGES_HURT[i];
     this.img = this.imageChache[path];
     this.currentImage++;
   }
   animateDead() {
-    let i = this.currentImage % this.IMAGES_DEAD.length; //let I = 0 % 6;
+    let i = this.currentImage % this.IMAGES_DEAD.length; 
     let path = this.IMAGES_DEAD[i];
     this.img = this.imageChache[path];
     this.currentImage++;
@@ -104,6 +94,20 @@ class Character extends moveableObject {
   }
 
   //moveset:
+  playIdle() {
+    setInterval(() => {
+      if (
+        !this.isDead() &&
+        !this.world.keyboard.LEFT &&
+        !this.world.keyboard.RIGHT &&
+        !this.world.keyboard.UP &&
+        !this.world.keyboard.DOWN
+      ) {
+        this.animateIdle();
+    }
+    }, 100);
+   
+}
 
   moveRight() {
     // Intervall for Movement

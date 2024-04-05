@@ -24,7 +24,7 @@ class Gameworld {
     this.character.moveLeft();
     this.character.moveUp();
     this.character.moveDown();
-    this.character.animateIdle();
+    this.character.playIdle();
     this.character.showIsHurt();
     this.character.beDead();
   }
