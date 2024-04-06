@@ -145,7 +145,7 @@ class Character extends moveableObject {
   }
   moveUp() {
     setInterval(() => {
-      if (this.world.keyboard.UP) {
+      if (this.world.keyboard.UP && this.positiony > this.world.level.levelEndPositionYup) {
         this.positiony -= 5;
       }
     }, 1000 / 60);
@@ -157,7 +157,7 @@ class Character extends moveableObject {
   }
   moveDown() {
     setInterval(() => {
-      if (this.world.keyboard.DOWN) {
+      if (this.world.keyboard.DOWN && this.positiony < this.world.level.levelEndPositionYdown) {
         this.positiony += 5;
       }
     }, 1000 / 60);
