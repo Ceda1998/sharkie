@@ -20,7 +20,7 @@ class Endboss extends moveableObject {
     super().loadImage(this.IMG_FLOATING[0]);
     this.loadImages(this.IMG_FLOATING);
     this.animateCharacters(this.IMG_FLOATING);
-    this.positionx = 2100;
+    this.positionx = 3200;
     this.positiony = -50;
   }
 }
