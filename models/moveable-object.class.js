@@ -6,6 +6,8 @@ class moveableObject extends DrawableObject {
   coins = 0;
   otherDirection = false;
   getDamage_sound = new Audio("./audio/getDamage.mp3");
+  getCoin_sound = new Audio ("./audio/collectCoin.mp3");
+  getPoisonBottle_sound = new Audio ("./audio/collectPoison.mp3");
 
   
   isColliding(obj) {
@@ -31,6 +33,7 @@ class moveableObject extends DrawableObject {
   }
 
   getCoins() {
+    this.getCoin_sound.play();
     this.coins += 10;
     if(this.coins >= 100) {
       this.coins = 100;
@@ -39,6 +42,7 @@ class moveableObject extends DrawableObject {
   }
 
   getPoison() {
+    this.getPoisonBottle_sound.play();
     this.poisonBottles += 21;
     if(this.poisonBottles >= 100) {
       this.poisonBottles = 100;
