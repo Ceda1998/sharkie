@@ -42,7 +42,6 @@ class Gameworld {
           this.character.getCoins();
           this.coinBar.setPercentageCoin(this.character.coins);
           this.level.coins.splice(index, 1); 
-          console.log(this.level.coins);
         }
       });
       this.level.poison.forEach((poison, index) => {
@@ -50,10 +49,16 @@ class Gameworld {
           this.character.getPoison();
           this.poisonBar.setPercentagePoison(this.character.poisonBottles);
           this.level.poison.splice(index, 1); 
-          console.log(this.level.poison);
         }
       });
-    }, 200);
+    this.level.hearth.forEach((hearth, index) => {
+      if (this.character.isColliding(hearth)) {
+        this.character.getHealth();
+        this.statusBar.setPercentage(this.character.health);
+        this.level.hearth.splice(index, 1); 
+      }
+    });
+  }, 200);
   }
 
 

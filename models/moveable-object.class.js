@@ -32,13 +32,16 @@ class moveableObject extends DrawableObject {
     }
   }
 
+  getHealth() {
+    this.health += 30;
+  }
+
   getCoins() {
     this.getCoin_sound.play();
     this.coins += 10;
     if(this.coins >= 100) {
       this.coins = 100;
     }
-    console.log(this.coins);
   }
 
   getPoison() {
