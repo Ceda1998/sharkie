@@ -110,6 +110,7 @@ class Character extends moveableObject {
     let path = this.IMAGES_SHOOT[i];
     this.img = this.imageChache[path];
     this.currentImage++;
+    this.shooting_sound.play();
   }
 
   //moveset:
@@ -185,18 +186,6 @@ class Character extends moveableObject {
         this.animateSwim();
       }
     }, 300);
-  }
-
-  shoot() {
-      setInterval(() => {
-      if (
-        this.world.keyboard.SHOOT
-      ) {
-        console.log("Shoot!")
-        this.shooting_sound.play();
-        this.animateShoot();
-      }
-      }, 350);
   }
 
   showIsHurt() {

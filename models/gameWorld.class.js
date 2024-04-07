@@ -26,7 +26,6 @@ class Gameworld {
     this.character.moveLeft();
     this.character.moveUp();
     this.character.moveDown();
-    this.character.shoot();
     this.character.playIdle();
     this.character.showIsHurt();
     this.character.beDead();
@@ -37,8 +36,9 @@ class Gameworld {
       if(this.keyboard.SHOOT) {
         let blubber = new ShootableObject(this.character.positionx + 120, this.character.positiony + 100);
         this.shootableObjects.push(blubber)
+        this.character.animateShoot();
       }
-    }, 200);
+    }, 250);
   }
 
   checkCollisions() {
