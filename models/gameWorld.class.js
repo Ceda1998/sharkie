@@ -33,7 +33,7 @@ class Gameworld {
 
   checkShooting() {
     setInterval(() => {
-      if(this.keyboard.SHOOT) {
+      if(this.keyboard.SHOOT && this.character.poisonBottles) {
         let blubber = new ShootableObject(this.character.positionx + 120, this.character.positiony + 100);
         this.shootableObjects.push(blubber)
         this.character.animateShoot();
