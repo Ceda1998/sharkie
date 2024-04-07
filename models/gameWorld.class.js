@@ -8,7 +8,7 @@ class Gameworld {
   statusBar = new StatusBar();
   coinBar = new CoinBar();
   poisonBar = new PoisonBar();
-  shootableObjects = [new ShootableObject()];
+  shootableObjects = [];
 
   constructor(canvas, keyboard) {
     this.ctx = canvas.getContext("2d");
@@ -17,6 +17,7 @@ class Gameworld {
     this.draw();
     this.setWorld();
     this.checkCollisions();
+    this.checkShooting();
   }
 
   setWorld() {
@@ -29,6 +30,15 @@ class Gameworld {
     this.character.playIdle();
     this.character.showIsHurt();
     this.character.beDead();
+  }
+
+  checkShooting() {
+    setInterval(() => {
+      if(this.keyboard.SHOOT) {
+        let blubber = new ShootableObject(this.character.positionx + 120, this.character.positiony + 100);
+        this.shootableObjects.push(blubber)
+      }
+    }, 200);
   }
 
   checkCollisions() {

@@ -1,6 +1,6 @@
 const level1 = new Level(
     [new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Pufferfish(), new Endboss()],
-    [new Barrier()],
+    [],
     [new Coins(),new Coins(),new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins(), new Coins()],
     [new Poison(),new Poison(),new Poison(),new Poison(),new Poison(),new Poison(),new Poison(),new Poison(),],
     [new Heart(), new Heart(), new Heart()],
