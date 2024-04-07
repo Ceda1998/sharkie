@@ -46,7 +46,7 @@ class moveableObject extends DrawableObject {
 
   getPoison() {
     this.getPoisonBottle_sound.play();
-    this.poisonBottles += 21;
+    this.poisonBottles += 10;
     if(this.poisonBottles >= 100) {
       this.poisonBottles = 100;
     }

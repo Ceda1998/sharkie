@@ -31,15 +31,25 @@ class Gameworld {
     this.character.beDead();
   }
 
-  checkShooting() {
+  checkShooting() {    
     setInterval(() => {
-      if(this.keyboard.SHOOT && this.character.poisonBottles) {
+      if(this.keyboard.SHOOT && this.character.poisonBottles > 0) {
         let blubber = new ShootableObject(this.character.positionx + 120, this.character.positiony + 100);
         this.shootableObjects.push(blubber)
         this.character.animateShoot();
+        this.character.poisonBottles -= 10;
+        this.poisonBar.setPercentagePoison(this.character.poisonBottles);
+        this.checkCanShoot();
       }
     }, 250);
   }
+  checkCanShoot() {
+    let poisonCost = 10;
+    setInterval(() => {
+      this.poisonBar.setPercentagePoison(this.character.poisonBottles - poisonCost);
+    },1000/60);
+  }
+
 
   checkCollisions() {
     setInterval(() => {
