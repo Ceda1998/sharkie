@@ -67,6 +67,7 @@ class Gameworld {
     this.addObjectsToMap(this.level.barriers);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.poison);
+    this.addObjectsToMap(this.level.hearth);
 
     this.ctx.translate(-this.camera_x, 0); //moveCamera back
     //--------- space for fixed objects in canvas
