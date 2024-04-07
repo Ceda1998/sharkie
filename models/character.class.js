@@ -4,6 +4,7 @@ class Character extends moveableObject {
   positionx = 100;
   swimming_sound = new Audio("./audio/swimming.mp3");
   dying_sound = new Audio("./audio/gameOver.mp3");
+  shooting_sound = new Audio("./audio/shootingSound.mp3");
   IMAGES_IDLE = [
     "../img/1.Sharkie/1.IDLE/2.png",
     "../img/1.Sharkie/1.IDLE/3.png",
@@ -54,6 +55,16 @@ class Character extends moveableObject {
     "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00010.png",
     "../img/1.Sharkie/6.dead/1.Poisoned/sin subir/DES 2_00011.png",
   ];
+
+  IMAGES_SHOOT = [
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/1.png",
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/2.png",
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/3.png",
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/4.png",
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/5.png",
+    "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/6.png",
+  ];
+
   world;
   constructor() {
     super().loadImage("./img/1.Sharkie/1.IDLE/2.png");
@@ -61,6 +72,7 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_SWIM);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_SHOOT);
   }
 
   animateIdle() {
@@ -91,6 +103,13 @@ class Character extends moveableObject {
     this.img = this.imageChache[path];
     this.currentImage++;
     this.getDamage_sound.pause();
+  }
+
+  animateShoot() {
+    let i = this.currentImage % this.IMAGES_SHOOT.length; 
+    let path = this.IMAGES_SHOOT[i];
+    this.img = this.imageChache[path];
+    this.currentImage++;
   }
 
   //moveset:
@@ -166,6 +185,18 @@ class Character extends moveableObject {
         this.animateSwim();
       }
     }, 300);
+  }
+
+  shoot() {
+      setInterval(() => {
+      if (
+        this.world.keyboard.SHOOT
+      ) {
+        console.log("Shoot!")
+        this.shooting_sound.play();
+        this.animateShoot();
+      }
+      }, 350);
   }
 
   showIsHurt() {

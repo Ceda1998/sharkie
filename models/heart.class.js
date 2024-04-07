@@ -9,7 +9,7 @@ class Heart extends moveableObject {
       super().loadImage(this.IMG_HEART[0]);
       this.loadImages(this.IMG_HEART);
       this.animateCollectables(this.IMG_HEART);
-      this.positionx = 400 + Math.random() * 3000;
+      this.positionx = 1000 + Math.random() * 1500;
       this.positiony = 100 + Math.random() * 300;
     }
   }
