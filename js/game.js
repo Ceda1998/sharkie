@@ -25,6 +25,9 @@ document.addEventListener("keydown", (event) => {
   if (event.keyCode === 32) {
     keyboard.SHOOT = true;
   }
+  if (event.keyCode === 70) {
+    keyboard.FINSLAP = true;
+  }
 });
 
 document.addEventListener("keyup", (event) => {
@@ -42,6 +45,9 @@ document.addEventListener("keyup", (event) => {
   }
   if (event.keyCode === 32) {
     keyboard.SHOOT = false;
+  }
+  if (event.keyCode === 70) {
+    keyboard.FINSLAP = false;
   }
 });
 

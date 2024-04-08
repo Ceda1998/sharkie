@@ -65,6 +65,17 @@ class Character extends moveableObject {
     "./img/1.Sharkie/4.Attack/Bubble trap/Op2 (Without Bubbles)/6.png",
   ];
 
+  IMAGES_FINSLAP = [
+    "img/1.Sharkie/4.Attack/Fin slap/1.png",
+    "img/1.Sharkie/4.Attack/Fin slap/2.png",
+    "img/1.Sharkie/4.Attack/Fin slap/3.png",
+    "img/1.Sharkie/4.Attack/Fin slap/4.png",
+    "img/1.Sharkie/4.Attack/Fin slap/5.png",
+    "img/1.Sharkie/4.Attack/Fin slap/6.png",
+    "img/1.Sharkie/4.Attack/Fin slap/7.png",
+    "img/1.Sharkie/4.Attack/Fin slap/8.png",
+  ]
+
   world;
   constructor() {
     super().loadImage("./img/1.Sharkie/1.IDLE/2.png");
@@ -73,6 +84,7 @@ class Character extends moveableObject {
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_SHOOT);
+    this.loadImages(this.IMAGES_FINSLAP);
   }
 
   animateIdle() {
@@ -111,6 +123,13 @@ class Character extends moveableObject {
     this.img = this.imageChache[path];
     this.currentImage++;
     this.shooting_sound.play();
+  }
+
+  animateFinSlap() {
+    let i = this.currentImage % this.IMAGES_FINSLAP.length; 
+    let path = this.IMAGES_FINSLAP[i];
+    this.img = this.imageChache[path];
+    this.currentImage++;
   }
 
   //moveset:
@@ -186,6 +205,15 @@ class Character extends moveableObject {
         this.animateSwim();
       }
     }, 300);
+  }
+
+  attackFinSlap() {
+    setInterval(() => {
+      if (this.world.keyboard.FINSLAP) {
+        this.animateFinSlap();
+      }
+    }, 150);
+    
   }
 
   showIsHurt() {
